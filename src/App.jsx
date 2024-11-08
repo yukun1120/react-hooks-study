@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     console.log("hello hooks");
-  }, []);
+  }, [count]);
   // 第二引数に空配列を指定すると、マウント時にのみ実行される
 
   const handleClick = () => {
