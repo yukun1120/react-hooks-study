@@ -6,6 +6,12 @@ function App() {
   const [text, setText] = useState("");
   const [text2, setText2] = useState("");
   const [postList, setPostList] = useState([]);
+
+  useEffect(() => {
+    console.log("hello hooks");
+  }, []);
+  // 第二引数に空配列を指定すると、マウント時にのみ実行される
+
   const handleClick = () => {
     // 配列に追加する処理
     setPostList([
