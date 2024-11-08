@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import './App.css';
+import selfInfoContext from './main.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,6 +29,8 @@ function App() {
     setPostList(postList.filter((post) => post.id !== id));
   };
 
+  const selfInfo = useContext(selfInfoContext);
+
   return (
     <div className='App'>
       <h1>useState</h1>
@@ -55,6 +58,12 @@ function App() {
           </div>
         )}
       </div>
+      <hr />
+      <h1>useContext</h1>
+      <p>名前：{selfInfo.name}</p>
+      <p>年齢：{selfInfo.age}</p>
+      <p>趣味：{selfInfo.hobby}</p>
+      <hr />
     </div>
   )
 }
