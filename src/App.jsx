@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import './App.css';
 import selfInfoContext from './main.jsx';
 
@@ -30,6 +30,12 @@ function App() {
   };
 
   const selfInfo = useContext(selfInfoContext);
+
+  const inputRef = useRef()
+  const handleClickRef = () => {
+    // inputRef.current.focus();
+    console.log("inputRef", inputRef.current.value);
+  };
 
   return (
     <div className='App'>
@@ -64,6 +70,9 @@ function App() {
       <p>年齢：{selfInfo.age}</p>
       <p>趣味：{selfInfo.hobby}</p>
       <hr />
+      <h1>useRef</h1>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClickRef}>フォーカス</button>
     </div>
   )
 }
