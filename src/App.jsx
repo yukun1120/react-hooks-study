@@ -87,6 +87,8 @@ function App() {
       <p>{state}</p>
       <button onClick={() => dispatch({ type: 'increment' })}>プラス</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>マイナス</button>
+      <hr />
+      <h1>useMemo</h1>
     </div>
   )
 }
