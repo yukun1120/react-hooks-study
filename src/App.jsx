@@ -1,12 +1,20 @@
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useState, useEffect, useContext, useRef ,useReducer} from 'react';
 import './App.css';
 import selfInfoContext from './main.jsx';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment': return state + 1;
+    case 'decrement': return state - 1;
+  }
+} 
 
 function App() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
   const [text2, setText2] = useState("");
   const [postList, setPostList] = useState([]);
+  const [state, dispatch] = useReducer(reducer, 0);
 
   useEffect(() => {
     console.log("hello hooks");
@@ -36,6 +44,7 @@ function App() {
     // inputRef.current.focus();
     console.log("inputRef", inputRef.current.value);
   };
+
 
   return (
     <div className='App'>
@@ -73,6 +82,11 @@ function App() {
       <h1>useRef</h1>
       <input type="text" ref={inputRef} />
       <button onClick={handleClickRef}>フォーカス</button>
+      <hr />
+      <h1>useReducer</h1>
+      <p>{state}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>プラス</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>マイナス</button>
     </div>
   )
 }
